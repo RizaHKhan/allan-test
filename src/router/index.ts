@@ -1,8 +1,8 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 import Home from "../views/Home.vue";
-import Todos from "@/components/tabs/Todos.vue";
-import Post from "@/components/tabs/Post.vue";
-import Info from "@/components/tabs/Info.vue";
+import Todos from "@/views/tabs/Todos.vue";
+import Post from "@/views/tabs/Post.vue";
+import Info from "@/views/tabs/Info.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {

@@ -3,7 +3,7 @@
     <div class="main__routes">
       <router-link to="/todos">Todos</router-link>
       <router-link to="/post">Post</router-link>
-      <router-link to="/info">Info</router-link>
+      <router-link to="/info">My Info</router-link>
     </div>
     <div class="main__view mt4">
       <transition name="fade">
