@@ -11,6 +11,6 @@ describe("Button", () => {
     const button = wrapper.find("button");
     button.trigger("click");
     expect(button.text()).toBe("Submit");
-    expect(wrapper.emitted()).toHaveProperty("on-click");
+    expect(wrapper.emitted("on-click")).toBeTruthy();
   });
 });

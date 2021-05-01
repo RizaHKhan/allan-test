@@ -1,12 +1,14 @@
 <template>
-  <button class="button regular" v-if="!icon">{{ title }}</button>
-  <button class="button icon" :type="type" v-else>
+  <button class="button regular" v-if="!icon" @click="emit('on-click')">
+    {{ title }}
+  </button>
+  <button class="button icon" :type="type" v-else @click="emit('on-click')">
     <font-awesome-icon :icon="['fas', `${icon}`]" />
   </button>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, SetupContext } from "vue";
 export default defineComponent({
   name: "Button",
   props: {
@@ -22,6 +24,10 @@ export default defineComponent({
       type: String,
       default: "button",
     },
+  },
+  emits: ["on-click"],
+  setup(props, { emit }: SetupContext) {
+    return { emit };
   },
 });
 </script>
