@@ -6,9 +6,11 @@
       <router-link to="/info">My Info</router-link>
     </div>
     <div class="main__view mt4">
-      <transition name="fade">
-        <router-view :key="$route.fullPath"></router-view>
-      </transition>
+      <router-view v-slot="{ Component }">
+        <transition name="fade">
+          <component :is="Component" />
+        </transition>
+      </router-view>
     </div>
   </div>
 </template>

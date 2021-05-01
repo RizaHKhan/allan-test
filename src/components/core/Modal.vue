@@ -1,6 +1,10 @@
 <template>
   <transition name="fade">
-    <div class="modal" v-if="showModal" @click="handleClick($event.target)">
+    <div
+      class="modal"
+      v-if="componentName"
+      @click="handleClickOutside($event.target)"
+    >
       <div class="modal__content p5">
         <component :is="componentName" />
       </div>
@@ -10,27 +14,16 @@
 
 <script lang="ts">
 import { defineComponent, ref } from "vue";
-import Form from "@/components/compound/Form.vue";
+import ToDoForm from "@/components/compound/ToDoForm.vue";
+import { modalController } from "@/controllers/modalController.ts";
 
 export default defineComponent({
   name: "Modal",
-  components: { Form },
-  props: {
-    componentName: {
-      type: String,
-      default: "Form",
-    },
-  },
+  components: { ToDoForm },
   setup() {
-    const showModal = ref<boolean>(true);
+    const { handleClickOutside, componentName } = modalController();
 
-    const handleClick = (e: HTMLDivElement) => {
-      if (e.classList.contains("modal")) {
-        showModal.value = false;
-      }
-    };
-
-    return { handleClick, showModal };
+    return { handleClickOutside, componentName };
   },
 });
 </script>

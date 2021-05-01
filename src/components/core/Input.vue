@@ -1,9 +1,12 @@
 <template>
-  <input :placeholder="placeholder" />
+  <input
+    :placeholder="placeholder"
+    @input="emit('update:modelValue', $event.target.value)"
+  />
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, SetupContext } from "vue";
 export default defineComponent({
   name: "Input",
   props: {
@@ -12,6 +15,10 @@ export default defineComponent({
       default: "",
     },
   },
+  setup(props, { emit }: SetupContext) {
+    return { emit };
+  },
+  emits: ["update:modelValue"],
 });
 </script>
 

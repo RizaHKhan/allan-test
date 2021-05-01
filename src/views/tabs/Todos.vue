@@ -2,7 +2,7 @@
   <div class="todos">
     <div class="todos__action">
       <Input placeholder="Search" />
-      <Button />
+      <Button title="Add New" @click="setComponentName('ToDoForm')" />
     </div>
     <div class="todos__data">
       <div class="todos__data--header row pb4 mt4">
@@ -29,29 +29,17 @@
 import { defineComponent, ref } from "vue";
 import Input from "@/components/core/Input.vue";
 import Button from "@/components/core/Button.vue";
-
-interface Todo {
-  title: string;
-  description: string;
-}
+import { modalController } from "@/controllers/modalController.ts";
+import { todosController } from "@/controllers/todosController.ts";
 
 export default defineComponent({
   name: "Todos",
   components: { Input, Button },
   setup() {
-    const todos = ref<Todo[]>([
-      {
-        title: "Put out the trash",
-        description:
-          "The trash gets stinky after a while so better to get rid of it now",
-      },
-      {
-        title: "Do your homework",
-        description: "Best to do our homework in order to get a good job",
-      },
-    ]);
+    const { setComponentName } = modalController();
+    const { todos } = todosController();
 
-    return { todos };
+    return { todos, setComponentName };
   },
 });
 </script>
