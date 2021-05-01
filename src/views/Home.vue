@@ -6,7 +6,9 @@
       <router-link to="/info">Info</router-link>
     </div>
     <div class="main__view mt4">
-      <router-view></router-view>
+      <transition name="fade">
+        <router-view :key="$route.fullPath"></router-view>
+      </transition>
     </div>
   </div>
 </template>
@@ -44,8 +46,16 @@ export default defineComponent({
       }
     }
   }
+}
 
-  &__view {
-  }
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.5s ease;
+  position: absolute;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  position: absolute;
+  transform: translateX(400px);
+  opacity: 0;
 }
 </style>
