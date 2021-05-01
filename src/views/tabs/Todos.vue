@@ -18,7 +18,7 @@
         >
           <p>{{ title }}</p>
           <p>{{ description }}</p>
-          <Button title="Delete" />
+          <Button icon="trash" />
         </div>
       </div>
     </div>

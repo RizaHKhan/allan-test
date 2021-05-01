@@ -1,5 +1,8 @@
 <template>
-  <button class="button">{{ title }}</button>
+  <button class="button regular" v-if="!icon">{{ title }}</button>
+  <button class="button icon" v-else>
+    <font-awesome-icon :icon="['fas', `${icon}`]" />
+  </button>
 </template>
 
 <script lang="ts">
@@ -10,6 +13,10 @@ export default defineComponent({
     title: {
       type: String,
       default: "Submit",
+    },
+    icon: {
+      type: String,
+      default: "",
     },
   },
 });
@@ -28,5 +35,9 @@ export default defineComponent({
     background: grey;
     color: white;
   }
+}
+
+.icon {
+  margin: auto;
 }
 </style>
