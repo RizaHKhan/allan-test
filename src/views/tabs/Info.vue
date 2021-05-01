@@ -1,9 +1,9 @@
 <template>
   <form class="form" @submit.prevent="handleSubmit">
-    <Input label="Name" />
-    <Input label="Email" />
-    <Input label="Password" />
-    <TextArea label="Bio" />
+    <Input label="Name" v-model="name" />
+    <Input label="Email" v-model="email" />
+    <Input label="Password" type="password" v-model="password" />
+    <TextArea label="Bio" v-model="bio" />
     <Button type="submit" />
     <div class="errors" :class="errors ? 'has-errors' : ''">
       <p>All fields are required</p>
@@ -15,18 +15,23 @@
 import Input from "@/components/core/Input.vue";
 import Button from "@/components/core/Button.vue";
 import TextArea from "@/components/core/TextArea.vue";
+import { userInfoController } from "@/controllers/userInfoController.ts";
 
-import { defineComponent, ref } from "vue";
+import { defineComponent } from "vue";
 export default defineComponent({
   name: "Info",
   components: { Input, Button, TextArea },
   setup() {
-    const errors = ref<boolean>(false);
-    const handleSubmit = () => {
-      errors.value = true;
-    };
+    const {
+      name,
+      email,
+      password,
+      bio,
+      handleSubmit,
+      errors,
+    } = userInfoController();
 
-    return { handleSubmit, errors };
+    return { handleSubmit, errors, name, email, password, bio };
   },
 });
 </script>

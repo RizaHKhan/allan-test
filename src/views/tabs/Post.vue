@@ -6,7 +6,7 @@
     </div>
     <div class="todos__data">
       <div class="todos__data--header row pb4 mt4">
-        <p>Todo Name</p>
+        <p>Post Name</p>
         <p>Text</p>
         <p>Email</p>
         <p class="text-center">Actions</p>
@@ -76,5 +76,6 @@ export default defineComponent({
 .row {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 150px;
+  grid-gap: 1rem;
 }
 </style>

@@ -2,6 +2,7 @@
   <div class="label" v-if="label">{{ label }}</div>
   <input
     class="input"
+    :type="type"
     :placeholder="placeholder"
     @input="emit('update:modelValue', $event.target.value)"
   />
@@ -19,6 +20,10 @@ export default defineComponent({
     label: {
       type: String,
       default: "",
+    },
+    type: {
+      type: String,
+      default: "text",
     },
   },
   setup(props, { emit }: SetupContext) {
