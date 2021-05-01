@@ -2,8 +2,8 @@
   <div class="form">
     <h2 class="form__title my2">New Type</h2>
     <div class="form__inputs my2">
-      <Input v-model="title" />
-      <Input v-model="description" />
+      <Input v-model="title" placeholder="Title" />
+      <Input v-model="description" placeholder="Description" />
     </div>
     <div class="form__errors" :class="errors ? 'has-errors' : ''">
       <p>All fields are required</p>

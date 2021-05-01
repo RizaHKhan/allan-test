@@ -1,5 +1,6 @@
 <template>
   <input
+    class="input"
     :placeholder="placeholder"
     @input="emit('update:modelValue', $event.target.value)"
   />
@@ -22,4 +23,10 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.input {
+  padding: 0.5rem 1rem;
+  border: 1px solid grey;
+  border-radius: 5px;
+}
+</style>
