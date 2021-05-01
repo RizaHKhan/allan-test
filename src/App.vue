@@ -1,15 +1,14 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </div>
+  <Navbar />
   <router-view />
 </template>
 
-<style lang="scss" scoped>
-#nav {
-  @include media-up(lg) {
-    border: solid 1px red;
-  }
-}
-</style>
+<script lang="ts">
+import Navbar from "@/components/core/Navbar.vue";
+
+import { defineComponent } from "vue";
+export default defineComponent({
+  name: "App",
+  components: { Navbar },
+});
+</script>
