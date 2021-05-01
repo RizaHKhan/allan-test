@@ -10,3 +10,8 @@ body {
   font-family: 'Raleway', sans-serif;
   padding: 1rem;
 }
+
+a.router-link-active{
+  background:  grey;
+  color: white !important;
+}
