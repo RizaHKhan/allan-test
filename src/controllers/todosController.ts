@@ -1,19 +1,18 @@
 import { ref } from "vue";
 
 interface Todo {
-  title: string;
-  description: string;
+  name: string;
+  text: string;
 }
 
 const todos = ref<Todo[]>([
   {
-    title: "Put out the trash",
-    description:
-      "The trash gets stinky after a while so better to get rid of it now",
+    name: "Put out the trash",
+    text: "The trash gets stinky after a while so better to get rid of it now",
   },
   {
-    title: "Do your homework",
-    description: "Best to do our homework in order to get a good job",
+    name: "Do your homework",
+    text: "Best to do our homework in order to get a good job",
   },
 ]);
 

@@ -15,11 +15,12 @@
 <script lang="ts">
 import { defineComponent, ref } from "vue";
 import ToDoForm from "@/components/compound/ToDoForm.vue";
+import PostForm from "@/components/compound/PostForm.vue";
 import { modalController } from "@/controllers/modalController.ts";
 
 export default defineComponent({
   name: "Modal",
-  components: { ToDoForm },
+  components: { ToDoForm, PostForm },
   setup() {
     const { handleClickOutside, componentName } = modalController();
 

@@ -4,6 +4,7 @@
     <div class="form__inputs my2">
       <Input v-model="name" placeholder="Name" />
       <Input v-model="text" placeholder="Text" />
+      <Input v-model="email" placeholder="Email" />
     </div>
     <div class="form__errors" :class="errors ? 'has-errors' : ''">
       <p>All fields are required</p>
@@ -17,30 +18,30 @@
 <script lang="ts">
 import Button from "@/components/core/Button.vue";
 import Input from "@/components/core/Input.vue";
-import { todosController } from "@/controllers/todosController.ts";
+import { postController } from "@/controllers/postController.ts";
 import { modalController } from "@/controllers/modalController.ts";
 
 import { defineComponent, reactive, toRefs, ref } from "vue";
 export default defineComponent({
-  name: "ToDoForm",
+  name: "PostForm",
   components: { Button, Input },
   setup() {
-    const { addTodo } = todosController();
+    const { addPost } = postController();
     const { componentName } = modalController();
     const errors = ref<boolean>(false);
-    const todo = reactive({ name: "", text: "" });
+    const post = reactive({ name: "", text: "", email: "" });
 
     const handleSubmit = () => {
-      if (!todo.name || !todo.text) {
+      if (!post.name || !post.text) {
         errors.value = true;
         return;
       }
       errors.value = false;
-      addTodo(todo);
+      addPost(post);
       componentName.value = "";
     };
 
-    return { ...toRefs(todo), handleSubmit, errors };
+    return { ...toRefs(post), handleSubmit, errors };
   },
 });
 </script>

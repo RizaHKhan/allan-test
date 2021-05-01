@@ -13,11 +13,11 @@
       <div class="todos__data--body mt4">
         <div
           class="todos__data--body--item row mt4"
-          v-for="({ title, description }, i) in todos"
+          v-for="({ name, text }, i) in todos"
           :key="i"
         >
-          <p>{{ title }}</p>
-          <p>{{ description }}</p>
+          <p>{{ name }}</p>
+          <p>{{ text }}</p>
           <Button icon="trash" @click="removeTodo(i)" />
         </div>
       </div>
