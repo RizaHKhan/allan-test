@@ -1,5 +1,5 @@
 import { toRefs, reactive, ref } from "vue";
-import { modalController } from "./modalController.ts";
+import { modalController } from "./modalController";
 
 interface UserInfo {
   name: string;
@@ -29,9 +29,10 @@ export const userInfoController = () => {
       errors.value = true;
     } else {
       errors.value = false;
-      for (const i in userInfo) {
-        userInfo[i] = "";
-      }
+      userInfo.name = "";
+      userInfo.email = "";
+      userInfo.password = "";
+      userInfo.bio = "";
       setComponentName("SuccessMessage");
     }
   };
