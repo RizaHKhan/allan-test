@@ -8,7 +8,7 @@
       <div class="todos__data--header row pb4 mt4">
         <p>Todo Name</p>
         <p>Text</p>
-        <p>Actions</p>
+        <p class="text-center">Actions</p>
       </div>
       <div class="todos__data--body mt4">
         <div
@@ -18,7 +18,7 @@
         >
           <p>{{ title }}</p>
           <p>{{ description }}</p>
-          <Button icon="trash" />
+          <Button icon="trash" @click="removeTodo(i)" />
         </div>
       </div>
     </div>
@@ -37,9 +37,9 @@ export default defineComponent({
   components: { Input, Button },
   setup() {
     const { setComponentName } = modalController();
-    const { todos } = todosController();
+    const { todos, removeTodo } = todosController();
 
-    return { todos, setComponentName };
+    return { todos, setComponentName, removeTodo };
   },
 });
 </script>

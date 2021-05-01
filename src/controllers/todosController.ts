@@ -22,5 +22,9 @@ export const todosController = () => {
     todos.value.push(todo);
   };
 
-  return { todos, addTodo };
+  const removeTodo = (index: number): void => {
+    todos.value.splice(index, 1);
+  };
+
+  return { todos, addTodo, removeTodo };
 };
