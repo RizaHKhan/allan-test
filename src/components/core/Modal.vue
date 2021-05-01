@@ -1,6 +1,6 @@
 <template>
   <transition name="fade">
-    <div class="modal">
+    <div class="modal" v-if="showModal" @click="handleClick($event.target)">
       <div class="modal__content p5">
         <component :is="componentName" />
       </div>
@@ -9,7 +9,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, ref } from "vue";
 import Form from "@/components/compound/Form.vue";
 
 export default defineComponent({
@@ -20,6 +20,17 @@ export default defineComponent({
       type: String,
       default: "Form",
     },
+  },
+  setup() {
+    const showModal = ref<boolean>(true);
+
+    const handleClick = (e: HTMLDivElement) => {
+      if (e.classList.contains("modal")) {
+        showModal.value = false;
+      }
+    };
+
+    return { handleClick, showModal };
   },
 });
 </script>
