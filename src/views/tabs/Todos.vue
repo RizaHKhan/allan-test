@@ -1,7 +1,7 @@
 <template>
   <div class="todos">
     <div class="todos__action">
-      <Input placeholder="Search" />
+      <Input placeholder="Search" v-model="filter" />
       <Button title="Add New" @click="setComponentName('ToDoForm')" />
     </div>
     <div class="todos__data">
@@ -13,7 +13,7 @@
       <div class="todos__data--body mt4">
         <div
           class="todos__data--body--item row mt4"
-          v-for="({ name, text }, i) in todos"
+          v-for="({ name, text }, i) in filteredTodos"
           :key="i"
         >
           <p>{{ name }}</p>
@@ -37,9 +37,9 @@ export default defineComponent({
   components: { Input, Button },
   setup() {
     const { setComponentName } = modalController();
-    const { todos, removeTodo } = todosController();
+    const { filteredTodos, removeTodo, filter } = todosController();
 
-    return { todos, setComponentName, removeTodo };
+    return { filteredTodos, setComponentName, removeTodo, filter };
   },
 });
 </script>

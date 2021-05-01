@@ -1,4 +1,4 @@
-import { ref } from "vue";
+import { ref, computed } from "vue";
 
 interface Todo {
   name: string;
@@ -17,6 +17,16 @@ const todos = ref<Todo[]>([
 ]);
 
 export const todosController = () => {
+  const filter = ref<string>("");
+
+  const filteredTodos = computed(() => {
+    return todos.value.filter(
+      (p) =>
+        p.name.toLowerCase().includes(filter.value.toLowerCase()) ||
+        p.text.toLowerCase().includes(filter.value.toLowerCase())
+    );
+  });
+
   const addTodo = (todo: Todo): void => {
     todos.value.push(todo);
   };
@@ -25,5 +35,5 @@ export const todosController = () => {
     todos.value.splice(index, 1);
   };
 
-  return { todos, addTodo, removeTodo };
+  return { filteredTodos, addTodo, removeTodo, filter };
 };
