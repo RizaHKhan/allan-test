@@ -4,7 +4,7 @@
     class="input"
     :type="type"
     :placeholder="placeholder"
-    @input="emit('update:modelValue', $event.target.value)"
+    @input="$emit('update:modelValue', $event.target.value)"
   />
 </template>
 
@@ -12,6 +12,7 @@
 import { defineComponent, SetupContext } from "vue";
 export default defineComponent({
   name: "Input",
+  emits: ["update:modelValue"],
   props: {
     placeholder: {
       type: String,
@@ -25,11 +26,15 @@ export default defineComponent({
       type: String,
       default: "text",
     },
+    modelValue: {
+      type: String,
+      required: false,
+      default: "",
+    },
   },
   setup(props, { emit }: SetupContext) {
     return { emit };
   },
-  emits: ["update:modelValue"],
 });
 </script>
 
