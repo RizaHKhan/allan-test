@@ -1,6 +1,6 @@
 <template>
   <button class="button regular" v-if="!icon">{{ title }}</button>
-  <button class="button icon" v-else>
+  <button class="button icon" :type="type" v-else>
     <font-awesome-icon :icon="['fas', `${icon}`]" />
   </button>
 </template>
@@ -17,6 +17,10 @@ export default defineComponent({
     icon: {
       type: String,
       default: "",
+    },
+    type: {
+      type: String,
+      default: "button",
     },
   },
 });
