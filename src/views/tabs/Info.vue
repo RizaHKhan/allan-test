@@ -4,7 +4,7 @@
     <Input label="Email" v-model="email" />
     <Input label="Password" type="password" v-model="password" />
     <TextArea label="Bio" v-model="bio" />
-    <Button type="submit" />
+    <Button type="submit" class="float-right" />
     <div class="errors" :class="errors ? 'has-errors' : ''">
       <p>All fields are required</p>
     </div>
@@ -42,6 +42,10 @@ export default defineComponent({
   grid-auto-flow: row;
   grid-gap: 1rem;
   max-width: 50%;
+
+  @include media-down(md) {
+    max-width: 100%;
+  }
 }
 
 .errors {
@@ -52,6 +56,10 @@ export default defineComponent({
   p {
     color: red;
   }
+}
+
+.float-right {
+  justify-self: end;
 }
 
 .has-errors {

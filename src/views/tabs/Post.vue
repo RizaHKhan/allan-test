@@ -5,7 +5,7 @@
       <Button title="Add New" @click="setComponentName('PostForm')" />
     </div>
     <div class="todos__data">
-      <div class="todos__data--header row pb4 mt4">
+      <div class="todos__data--header post-row pb4 mt4">
         <p>Post Name</p>
         <p>Text</p>
         <p>Email</p>
@@ -13,7 +13,7 @@
       </div>
       <div class="todos__data--body mt4">
         <div
-          class="todos__data--body--item row mt4"
+          class="todos__data--body--item post-row mt4"
           v-for="({ name, text, email }, i) in filteredPosts"
           :key="i"
         >
@@ -56,10 +56,22 @@ export default defineComponent({
   &__action {
     display: flex;
     justify-content: space-between;
+
+    @include media-down(md) {
+      flex-direction: column;
+      .button {
+        margin: 1rem 0;
+      }
+    }
   }
+
   &__data {
     &--header {
       border-bottom: 1px solid grey;
+
+      @include media-down(md) {
+        display: none;
+      }
 
       p {
         font-weight: bold;
@@ -71,11 +83,5 @@ export default defineComponent({
       }
     }
   }
-}
-
-.row {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 150px;
-  grid-gap: 1rem;
 }
 </style>

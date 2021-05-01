@@ -49,25 +49,27 @@ export default defineComponent({
   &__action {
     display: flex;
     justify-content: space-between;
+
+    @include media-down(md) {
+      flex-direction: column;
+      .button {
+        margin: 1rem 0;
+      }
+    }
   }
+
   &__data {
     &--header {
       border-bottom: 1px solid grey;
+
+      @include media-down(md) {
+        display: none;
+      }
 
       p {
         font-weight: bold;
       }
     }
-
-    &--body {
-      &--item {
-      }
-    }
   }
-}
-
-.row {
-  display: grid;
-  grid-template-columns: 1fr 2fr 150px;
 }
 </style>

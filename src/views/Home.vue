@@ -38,6 +38,12 @@ export default defineComponent({
 
   &__routes {
     display: flex;
+    text-align: center;
+
+    @include media-down(md) {
+      flex-direction: column;
+      margin: auto;
+    }
 
     a {
       padding: 0.5rem 2rem;
@@ -47,6 +53,10 @@ export default defineComponent({
       border-radius: 5px;
       margin-right: 0.2rem;
       border: 1px solid grey;
+
+      @include media-down(md) {
+        margin: 0.2rem 0;
+      }
 
       &:hover {
         background: grey;

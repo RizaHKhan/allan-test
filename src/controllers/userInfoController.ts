@@ -29,10 +29,9 @@ export const userInfoController = () => {
       errors.value = true;
     } else {
       errors.value = false;
-      userInfo.name = "";
-      userInfo.email = "";
-      userInfo.password = "";
-      userInfo.bio = "";
+      for (const i in userInfo) {
+        userInfo[i] = "";
+      }
       setComponentName("SuccessMessage");
     }
   };

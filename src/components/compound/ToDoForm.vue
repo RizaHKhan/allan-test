@@ -51,6 +51,10 @@ export default defineComponent({
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 1rem;
+
+    @include media-down(md) {
+      grid-template-columns: 1fr;
+    }
   }
 
   &__errors {
