@@ -126,11 +126,6 @@ export default defineComponent({
         font-weight: bold;
       }
     }
-
-    &--body {
-      &--item {
-      }
-    }
   }
 }
 </style>
