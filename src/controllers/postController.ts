@@ -38,5 +38,16 @@ export const postController = () => {
     posts.value.splice(index, 1);
   };
 
-  return { posts, addPost, removePost, filter, filteredPosts };
+  const savePost = (
+    index: number,
+    name: string,
+    text: string,
+    email: string
+  ) => {
+    posts.value[index].name = name;
+    posts.value[index].text = text;
+    posts.value[index].email = email;
+  };
+
+  return { posts, addPost, removePost, filter, filteredPosts, savePost };
 };

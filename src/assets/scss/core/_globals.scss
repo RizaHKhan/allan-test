@@ -51,7 +51,8 @@ a.router-link-active{
 
 .post-row {
   @extend .row;
-  grid-template-columns: 1fr 1fr 1fr 150px;
+  grid-template-columns: 1fr 1fr 1fr 100px 100px;
+  // grid-template-columns: 1fr 2fr 100px 100px;
 
   @include media-down(md) {
     border-bottom: 1px solid grey;

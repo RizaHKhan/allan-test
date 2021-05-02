@@ -17,9 +17,9 @@
           :key="i"
         >
           <p v-if="i !== updateIndex">{{ name }}</p>
-          <Input v-else v-model="updateName" classes="mr2" />
+          <Input v-else v-model="updateName" classes="m1" />
           <p v-if="i !== updateIndex">{{ text }}</p>
-          <Input v-else v-model="updateText" />
+          <Input v-else v-model="updateText" classes="m1" />
           <Button icon="trash" @click="removeTodo(i)" />
           <Button
             v-if="updateIndex !== i"
@@ -50,8 +50,8 @@ export default defineComponent({
   setup() {
     const { setComponentName } = modalController();
     const { filteredTodos, removeTodo, filter, saveTodo } = todosController();
-    const updateIndex = ref<number>(-1);
 
+    const updateIndex = ref<number>(-1);
     const updateName = ref<string>("");
     const updateText = ref<string>("");
 

@@ -17,10 +17,23 @@
           v-for="({ name, text, email }, i) in filteredPosts"
           :key="i"
         >
-          <p>{{ name }}</p>
-          <p>{{ text }}</p>
-          <p>{{ email }}</p>
+          <p v-if="i !== updateIndex">{{ name }}</p>
+          <Input v-else v-model="updateName" classes="m1" />
+          <p v-if="i !== updateIndex">{{ text }}</p>
+          <Input v-else v-model="updateText" classes="m1" />
+          <p v-if="i !== updateIndex">{{ email }}</p>
+          <Input v-else v-model="updateEmail" classes="m1" />
           <Button icon="trash" @click="removePost(i)" />
+          <Button
+            v-if="updateIndex !== i"
+            icon="cogs"
+            @click="handleUpdate(i, name, text, email)"
+          />
+          <Button
+            v-else
+            icon="save"
+            @click="handleSave(i, updateName, updateText, updateEmail)"
+          />
         </div>
       </div>
     </div>
@@ -38,14 +51,46 @@ export default defineComponent({
   name: "Todos",
   components: { Input, Button },
   setup() {
+    const updateIndex = ref<number>(-1);
+    const updateName = ref<string>("");
+    const updateText = ref<string>("");
+    const updateEmail = ref<string>("");
+
     const { setComponentName } = modalController();
-    const { removePost, filteredPosts, filter } = postController();
+    const { removePost, filteredPosts, filter, savePost } = postController();
+
+    const handleUpdate = (
+      i: number,
+      name: string,
+      text: string,
+      email: string
+    ) => {
+      updateIndex.value = i;
+      updateName.value = name;
+      updateText.value = text;
+      updateEmail.value = email;
+    };
+
+    const handleSave = (i: number) => {
+      if (!updateName.value || !updateText.value || !updateEmail.value) {
+        updateIndex.value = -1;
+        return;
+      }
+      savePost(i, updateName.value, updateText.value, updateEmail.value);
+      updateIndex.value = -1;
+    };
 
     return {
       setComponentName,
       removePost,
       filter,
       filteredPosts,
+      updateName,
+      updateText,
+      updateEmail,
+      handleUpdate,
+      handleSave,
+      updateIndex,
     };
   },
 });
