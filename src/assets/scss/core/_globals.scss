@@ -23,7 +23,7 @@ a.router-link-active{
 
 .row {
   display: grid;
-  grid-template-columns: 1fr 2fr 150px;
+  grid-template-columns: 1fr 2fr 100px 100px;
 
   @include media-down(md) {
     border-bottom: 1px solid grey;
