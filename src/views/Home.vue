@@ -7,7 +7,9 @@
     </div>
     <div class="main__view mt4">
       <router-view v-slot="{ Component }">
-        <component :is="Component" />
+        <transition name="component-fade" mode="out-in">
+          <component :is="Component" />
+        </transition>
       </router-view>
     </div>
   </div>
@@ -63,5 +65,14 @@ export default defineComponent({
       }
     }
   }
+}
+
+.component-fade-enter-active,
+.component-fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+.component-fade-enter, .component-fade-leave-to
+/* .component-fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
 }
 </style>
