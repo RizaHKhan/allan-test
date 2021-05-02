@@ -1,31 +1,15 @@
 <template>
-  <div class="main">
-    <div class="main__routes">
-      <router-link to="/todos">Todos</router-link>
-      <router-link to="/post">Post</router-link>
-      <router-link to="/info">My Info</router-link>
-    </div>
-    <div class="main__view mt4">
-      <router-view v-slot="{ Component }">
-        <component :is="Component" />
-      </router-view>
-    </div>
+  <div class="main__routes">
+    <router-link to="/todos">Todos</router-link>
+    <router-link to="/post">Post</router-link>
+    <router-link to="/info">My Info</router-link>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted } from "vue";
-import { useRouter } from "vue-router";
-
+import { defineComponent } from "vue";
 export default defineComponent({
-  name: "Home",
-  setup() {
-    const { push } = useRouter();
-
-    onMounted(() => {
-      push("/todos");
-    });
-  },
+  name: "Menu",
 });
 </script>
 
@@ -41,7 +25,8 @@ export default defineComponent({
     text-align: center;
 
     @include media-down(md) {
-      display: none;
+      flex-direction: column;
+      margin: auto;
     }
 
     a {

@@ -17,11 +17,12 @@ import { defineComponent, ref } from "vue";
 import ToDoForm from "@/components/compound/ToDoForm.vue";
 import PostForm from "@/components/compound/PostForm.vue";
 import SuccessMessage from "@/components/core/SuccessMessage.vue";
+import Menu from "@/components/core/Menu.vue";
 import { modalController } from "@/controllers/modalController.ts";
 
 export default defineComponent({
   name: "Modal",
-  components: { ToDoForm, PostForm, SuccessMessage },
+  components: { ToDoForm, PostForm, SuccessMessage, Menu },
   setup() {
     const { handleClickOutside, componentName } = modalController();
 
