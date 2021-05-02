@@ -2,7 +2,11 @@
   <div class="todos">
     <div class="todos__action">
       <Input placeholder="Search" v-model="filter" />
-      <Button title="Add New" @click="setComponentName('PostForm')" />
+      <Button
+        v-if="updateIndex === -1"
+        title="Add New"
+        @click="setComponentName('PostForm')"
+      />
     </div>
     <div class="todos__data">
       <div class="todos__data--header post-row pb4 mt4">
