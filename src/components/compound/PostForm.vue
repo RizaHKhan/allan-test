@@ -4,7 +4,7 @@
     <div class="form__inputs my2">
       <Input v-model="name" placeholder="Name" />
       <Input v-model="text" placeholder="Text" />
-      <Input v-model="email" placeholder="Email" />
+      <Input v-model="email" placeholder="Email" :required="true" />
     </div>
     <div class="form__errors" :class="errors ? 'has-errors' : ''">
       <p>All fields are required</p>
@@ -32,7 +32,7 @@ export default defineComponent({
     const post = reactive({ name: "", text: "", email: "" });
 
     const handleSubmit = () => {
-      if (!post.name || !post.text) {
+      if (!post.name || !post.text || !post.email) {
         errors.value = true;
         return;
       }

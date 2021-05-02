@@ -5,6 +5,7 @@
     :type="type"
     :placeholder="placeholder"
     :value="modelValue"
+    :required="required"
     @input="$emit('update:modelValue', $event.target.value)"
   />
 </template>
@@ -31,6 +32,10 @@ export default defineComponent({
       type: String,
       required: false,
       default: "",
+    },
+    required: {
+      type: Boolean,
+      default: false,
     },
   },
   setup(props, { emit }: SetupContext) {
