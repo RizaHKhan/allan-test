@@ -39,6 +39,7 @@ export default defineComponent({
 <style lang="scss" scoped>
 .navbar {
   display: flex;
+  padding: 1rem;
   justify-content: space-between;
 
   &__brand {
