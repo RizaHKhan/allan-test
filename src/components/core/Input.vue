@@ -2,6 +2,7 @@
   <div class="label" v-if="label">{{ label }}</div>
   <input
     class="input"
+    :class="classes"
     :type="type"
     :placeholder="placeholder"
     :value="modelValue"
@@ -21,6 +22,10 @@ export default defineComponent({
       default: "",
     },
     label: {
+      type: String,
+      default: "",
+    },
+    classes: {
       type: String,
       default: "",
     },

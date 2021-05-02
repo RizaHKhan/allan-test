@@ -35,5 +35,10 @@ export const todosController = () => {
     todos.value.splice(index, 1);
   };
 
-  return { filteredTodos, addTodo, removeTodo, filter };
+  const saveTodo = (index: number, name: string, text: string) => {
+    todos.value[index].name = name;
+    todos.value[index].text = text;
+  };
+
+  return { filteredTodos, addTodo, removeTodo, filter, saveTodo };
 };

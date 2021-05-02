@@ -16,9 +16,21 @@
           v-for="({ name, text }, i) in filteredTodos"
           :key="i"
         >
-          <p>{{ name }}</p>
-          <p>{{ text }}</p>
+          <p v-if="i !== updateIndex">{{ name }}</p>
+          <Input v-else v-model="updateName" classes="mr2" />
+          <p v-if="i !== updateIndex">{{ text }}</p>
+          <Input v-else v-model="updateText" />
           <Button icon="trash" @click="removeTodo(i)" />
+          <Button
+            v-if="updateIndex !== i"
+            icon="cogs"
+            @click="handleUpdate(i, name, text)"
+          />
+          <Button
+            v-else
+            icon="save"
+            @click="handleSave(i, updateName, updateText)"
+          />
         </div>
       </div>
     </div>
@@ -37,9 +49,38 @@ export default defineComponent({
   components: { Input, Button },
   setup() {
     const { setComponentName } = modalController();
-    const { filteredTodos, removeTodo, filter } = todosController();
+    const { filteredTodos, removeTodo, filter, saveTodo } = todosController();
+    const updateIndex = ref<number>(-1);
 
-    return { filteredTodos, setComponentName, removeTodo, filter };
+    const updateName = ref<string>("");
+    const updateText = ref<string>("");
+
+    const handleUpdate = (i: number, name: string, text: string) => {
+      updateIndex.value = i;
+      updateName.value = name;
+      updateText.value = text;
+    };
+
+    const handleSave = (i: number, name: string, text: string) => {
+      if (!name || !text) {
+        updateIndex.value = -1;
+        return;
+      }
+      saveTodo(i, name, text);
+      updateIndex.value = -1;
+    };
+
+    return {
+      filteredTodos,
+      setComponentName,
+      removeTodo,
+      filter,
+      handleUpdate,
+      updateIndex,
+      handleSave,
+      updateName,
+      updateText,
+    };
   },
 });
 </script>
