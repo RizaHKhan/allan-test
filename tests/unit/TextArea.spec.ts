@@ -1,9 +1,9 @@
 import { shallowMount } from "@vue/test-utils";
-import Input from "@/components/core/Input.vue";
+import TextArea from "@/components/core/TextArea.vue";
 
-describe("Input", () => {
+describe("TextArea", () => {
   it("emits an event on input", async () => {
-    const wrapper = shallowMount(Input, {
+    const wrapper = shallowMount(TextArea, {
       props: {
         modelValue: "name",
       },
